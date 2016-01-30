@@ -83,6 +83,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey (characters [0])) {
 			characters.RemoveAt (0);
 		}
+		game.kang.ShowFavour ();
 	}
 
 }

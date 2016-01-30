@@ -6,12 +6,12 @@ using System.Collections.Generic;
 public class MainGame : MonoBehaviour {
 
 	private bool clashOn;
+	public KanghisKhan kang;
 	[SerializeField] private float lastRoundEndTime;
 	[SerializeField] private GameObject player1FavourBar;
 	[SerializeField] private GameObject player2FavourBar;
 	[SerializeField] private Player player1;
 	[SerializeField] private Player player2;
-	[SerializeField] private KanghisKhan kang;
 	[SerializeField] private Text timer;
 
 	// Use this for initialization
