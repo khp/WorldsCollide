@@ -19,7 +19,7 @@ public class MainGame : MonoBehaviour {
 	void Start () {
 		Init ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if ((lastRoundEndTime + 3.0) > Time.time) {
@@ -106,7 +106,7 @@ public class MainGame : MonoBehaviour {
 		player2Letters.Clear ();
 		UpdateFavourBar ();
 	}
-		
+
 	void UpdateFavourBar () {
 
 	}
