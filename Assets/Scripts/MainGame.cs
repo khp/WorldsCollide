@@ -8,8 +8,8 @@ public class MainGame : MonoBehaviour {
 	[SerializeField] private float lastRoundEndTime;
 	[SerializeField] private GameObject player1FavourBar;
 	[SerializeField] private GameObject player2FavourBar;
-	[SerializeField] private GameObject player1;
-	[SerializeField] private GameObject player2;
+	[SerializeField] private Player player1;
+	[SerializeField] private Player player2;
 	private IList<char> player1Letters;
 	private IList<char> player2Letters;
 	private IList<char> player1CharacterInputs;
@@ -113,9 +113,9 @@ public class MainGame : MonoBehaviour {
 		
 
 	void EndRound () {
-		lastRoundEndTime == Time.time;
-		player1.ResetChoice;
-		player2.ResetChoice;
+		lastRoundEndTime = Time.time;
+		player1.ResetChoice ();
+		player2.ResetChoice ();
 		player1Letters.Clear ();
 		player2Letters.Clear ();
 		player1CharacterInputs.Clear ();

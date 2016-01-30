@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class Player : MonoBehaviour {
 
-	[SerializedField] private int playerNum;
+	[SerializeField] private int playerNum;
 	public int favour;
 	public int potential;
 	public string choice;
-	public boolean gameOn;
+	public bool gameOn;
 	private Dictionary<string,string> choiceRes;
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,7 @@ public class Player : MonoBehaviour {
 		potential = 0;
 		choice = null;
 		choiceRes = new Dictionary<string,string> ();
-		if (playerNum = 1) {
+		if (playerNum == 1) {
 			choiceRes.Add ("1", "mouse");
 			choiceRes.Add ("2", "cat");
 			choiceRes.Add ("3", "elephant");
@@ -33,12 +35,12 @@ public class Player : MonoBehaviour {
 			return;
 		foreach (string s in choiceRes.Keys) {
 			if (Input.GetKey (s)) {
-				choice = choiceRes.get (s);
+				choice = choiceRes[s];
 			}
 		}
 	}
 
-	void ResetChoice () {
+	public void ResetChoice () {
 		choice = null;
 	}
 }
