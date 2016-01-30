@@ -25,9 +25,15 @@ public class MainGame : MonoBehaviour {
 		if (!clashOn) {
 			if ((lastRoundEndTime + 2.0) > Time.time) {
 				ResolveChoices ();
-			}	
+			}
+			player1.StopClash ();
+			player2.StopClash ();
+		} else {
+			player1.StartClash ();
+			player2.StartClash ();
 		}
 	}
+
 
 	// This is called when the game begins
 	void Init () {
@@ -91,16 +97,6 @@ public class MainGame : MonoBehaviour {
 		//
 		//
 		return charactersGenerated;
-	}
-
-	void SetupKeyTriggers () {
-		//we need to create some key triggers based on the charactersGenerated
-		foreach (char c in player1Letters) {
-			SetupKeyTriggers (c);
-		}
-		foreach (char c in player1Letters) {
-			SetupKeyTriggers (c);
-		}	
 	}
 
 	void DisplayCharacterBoxes () {
