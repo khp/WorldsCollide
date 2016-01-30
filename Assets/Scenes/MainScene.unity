@@ -173,10 +173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cae35a2ab7f8e4d860c5dab354088c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 0
+  game: {fileID: 0}
   selection: {fileID: 0}
   favourText: {fileID: 0}
   potentialText: {fileID: 0}
+  playerNum: 0
   favour: 0
   potential: 0
   choice: 
@@ -319,10 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cae35a2ab7f8e4d860c5dab354088c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 0
+  game: {fileID: 0}
   selection: {fileID: 0}
   favourText: {fileID: 0}
   potentialText: {fileID: 0}
+  playerNum: 0
   favour: 0
   potential: 0
   choice: 
@@ -477,10 +479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cae35a2ab7f8e4d860c5dab354088c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 2
+  game: {fileID: 0}
   selection: {fileID: 1411474932}
   favourText: {fileID: 2022475616}
   potentialText: {fileID: 1591256416}
+  playerNum: 2
   favour: 0
   potential: 0
   choice: 
@@ -519,6 +522,7 @@ MonoBehaviour:
   player2FavourBar: {fileID: 0}
   player1: {fileID: 1363816998}
   player2: {fileID: 751113241}
+  kang: {fileID: 0}
   timer: {fileID: 1593222569}
 --- !u!4 &1019682744
 Transform:
@@ -664,10 +668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cae35a2ab7f8e4d860c5dab354088c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 1
+  game: {fileID: 0}
   selection: {fileID: 590767502}
   favourText: {fileID: 1589356068}
   potentialText: {fileID: 1213433351}
+  playerNum: 1
   favour: 0
   potential: 0
   choice: 
@@ -963,7 +968,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: Start!
 --- !u!222 &1593222570
 CanvasRenderer:
   m_ObjectHideFlags: 0

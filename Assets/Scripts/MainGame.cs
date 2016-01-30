@@ -21,9 +21,10 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		timer.text =  (Time.time - lastRoundEndTime).ToString();
+		float countdown = (3 - Time.time + lastRoundEndTime);
+		timer.text = countdown.ToString ("n2");
 		if (!clashOn) {
-			if ((lastRoundEndTime + 3.0) < Time.time) {
+			if (lastRoundEndTime < Time.time - 3.0f) {
 				ResolveChoices ();
 				lastRoundEndTime = Time.time;
 			}
@@ -48,6 +49,7 @@ public class MainGame : MonoBehaviour {
 
 		// the game starts without a clash
 		clashOn = false;
+		lastRoundEndTime = 0.0f;
 	}
 
 	void ResolveChoices () {
@@ -70,8 +72,8 @@ public class MainGame : MonoBehaviour {
 			player2.potential = player2.potential == 0 ? 0 : player2.potential - 1;
 		} else {
 			ResolveOfferings ();
-			EndRound ();
 		}
+		EndRound ();
 	}
 
 	void ResolveOfferings () {
@@ -156,7 +158,6 @@ public class MainGame : MonoBehaviour {
 	}
 
 	void EndRound () {
-		lastRoundEndTime = Time.time;
 		player1.ResetPlayer ();
 		player2.ResetPlayer ();
 		UpdateFavourBar ();
