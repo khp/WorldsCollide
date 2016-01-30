@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] private Text selection;
 	[SerializeField] private Text favourText;
 	[SerializeField] private Text potentialText;
+	[SerializeField] private Text clashChar;
 	public int playerNum;
 	public int favour;
 	public int potential;
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour {
 	void Start () {
 		favour = 0;
 		potential = 0;
-		choice = null;
+		choice = "";
 		choiceRes = new Dictionary<string,string> ();
 		finished = false;
 		if (playerNum == 1) {
@@ -43,14 +44,15 @@ public class Player : MonoBehaviour {
 		UpdateUI ();
 		if (clashOn) {
 			if (characters.Count > 0) {
+				clashChar.text = characters [0];
 				ClashInput ();
 			} else {
 				finished = true;
 			}
 			return;
 		}
-
-		if (choice != null)
+		clashChar.text = "";
+		if (choice != "")
 			return;
 		foreach (string s in choiceRes.Keys) {
 			if (Input.GetKey (s)) {
@@ -65,7 +67,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ResetPlayer () {
-		choice = null;
+		choice = "";
 		characters = null;
 	}
 
