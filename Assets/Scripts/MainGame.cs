@@ -136,12 +136,12 @@ public class MainGame : MonoBehaviour {
 
 	    var charListLength = charList.Count;
 
-	    System.Random rnd = new System.Random();
+		// UnityEngine.Random rnd = new UnityEngine.Random();
 	    List<string> charactersGenerated = new List<string>();
 
 	    int charSelected;
 	    for (int i = 0; i < resultLength; i++) {
-	        charSelected = rnd.Next(0, charListLength - 1);
+			charSelected = (int) UnityEngine.Random.Range(0, charListLength - 1);
 	        charactersGenerated.Add(charList[charSelected]);
 	        charList.RemoveAt(charSelected);
 	        charListLength = charList.Count;
@@ -163,4 +163,10 @@ public class MainGame : MonoBehaviour {
 
 	}
 
+	public void ClashWinner (Player player) {
+		player.favour = player.potential + player.favour;
+		player1.potential = 0;
+		player2.potential = 0;
+		clashOn = false;
+	}
 }

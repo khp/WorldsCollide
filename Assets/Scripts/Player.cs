@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 		choice = "";
 		choiceRes = new Dictionary<string,string> ();
 		finished = false;
+		clashOn = false;
 		if (playerNum == 1) {
 			choiceRes.Add ("1", "mouse");
 			choiceRes.Add ("2", "cat");
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour {
 				clashChar.text = characters [0];
 				ClashInput ();
 			} else {
+				game.ClashWinner (this);
 				finished = true;
 			}
 			return;
@@ -68,7 +70,6 @@ public class Player : MonoBehaviour {
 
 	public void ResetPlayer () {
 		choice = "";
-		characters = null;
 	}
 
 	public void StartClash() {
