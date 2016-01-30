@@ -52,8 +52,9 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void ResetChoice () {
+	public void ResetPlayer () {
 		choice = null;
+		characters = null;
 	}
 
 	public void StartClash() {
