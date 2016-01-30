@@ -22,9 +22,11 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if ((lastRoundEndTime + 3.0) > Time.time) {
-			ResolveChoices ();
-		}			
+		if (!clashOn) {
+			if ((lastRoundEndTime + 2.0) > Time.time) {
+				ResolveChoices ();
+			}	
+		}
 	}
 
 	// This is called when the game begins
@@ -78,6 +80,7 @@ public class MainGame : MonoBehaviour {
 	void Clash () {
 		player1Letters = GenerateCharacters ();
 		player2Letters = GenerateCharacters ();
+		SetupKeyTriggers ();
 		DisplayCharacterBoxes();
 		ResolveBattle ();
 	}
@@ -90,20 +93,33 @@ public class MainGame : MonoBehaviour {
 		return charactersGenerated;
 	}
 
+	void SetupKeyTriggers () {
+		//we need to create some key triggers based on the charactersGenerated
+		foreach (char c in player1Letters) {
+			SetupKeyTriggers (c);
+		}
+		foreach (char c in player1Letters) {
+			SetupKeyTriggers (c);
+		}	
+	}
+
 	void DisplayCharacterBoxes () {
 		//some UI stuff
 	}
 
 	void ResolveBattle () {
-		player1CharacterInputs
+
 	}
+		
 
 	void EndRound () {
 		lastRoundEndTime == Time.time;
-		player1.choice = null;
-		player2.choice = null;
+		player1.ResetChoice;
+		player2.ResetChoice;
 		player1Letters.Clear ();
 		player2Letters.Clear ();
+		player1CharacterInputs.Clear ();
+		player2CharacterInputs.Clear ();
 		UpdateFavourBar ();
 	}
 
