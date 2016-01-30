@@ -78,47 +78,47 @@ public class MainGame : MonoBehaviour {
 	}
 
 	void Clash () {
-		player1.characters = GenerateCharacters ();
-		player2.characters = GenerateCharacters ();
+		player1.characters = GenerateCharacters (6);
+		player2.characters = GenerateCharacters (6);
 		DisplayCharacterBoxes();
 		ResolveBattle ();
 	}
 
-	IList<string> GenerateCharacters () {
-	  	List<string> charList = new List<String>()
+	List<string> GenerateCharacters (int resultLength) {
+	  	List<string> charList = new List<string>()
 	    	{
-	    	    "A",
-	    	    "B",
-	    	    "C",
-	    	    "D",
-	    	    "E",
-	    	    "F",
-	    	    "G",
-	    	    "H",
-	    	    "I",
-	    	    "J",
-	    	    "K",
-	    	    "L",
-	    	    "M",
-	    	    "N",
-	    	    "O",
-	    	    "P",
-	    	    "Q",
-	    	    "R",
-	    	    "S",
-	    	    "T",
-	    	    "U",
-	    	    "V",
-	    	    "W",
-	    	    "X",
-	    	    "Y",
-	    	    "Z"
+	    	    "a",
+	    	    "b",
+	    	    "c",
+	    	    "d",
+	    	    "e",
+	    	    "f",
+	    	    "g",
+	    	    "h",
+	    	    "i",
+	    	    "j",
+	    	    "k",
+	    	    "l",
+	    	    "m",
+	    	    "n",
+	    	    "o",
+	    	    "p",
+	    	    "q",
+	    	    "r",
+	    	    "s",
+	    	    "t",
+	    	    "u",
+	    	    "v",
+	    	    "w",
+	    	    "x",
+	    	    "y",
+	    	    "z"
 	        };
 
 	    var charListLength = charList.Count;
 
-	    Random rnd = new Random();
-	    IList<String> charactersGenerated = new List<String>();
+	    System.Random rnd = new System.Random();
+	    List<string> charactersGenerated = new List<string>();
 
 	    int charSelected;
 	    for (int i = 0; i < resultLength; i++) {

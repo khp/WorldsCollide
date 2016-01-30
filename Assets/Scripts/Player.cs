@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (clashOn) {
-			if (characters.Count () > 0) {
+			if (characters.Count > 0) {
 				ClashInput ();
 			} else {
 				finished = true;
