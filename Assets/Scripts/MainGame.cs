@@ -85,11 +85,49 @@ public class MainGame : MonoBehaviour {
 	}
 
 	IList<string> GenerateCharacters () {
-		IList<string> charactersGenerated = new List<string>();
-		//some logic to generate random array of characters
-		//
-		//
-		return charactersGenerated;
+	  	List<string> charList = new List<String>()
+	    	{
+	    	    "A",
+	    	    "B",
+	    	    "C",
+	    	    "D",
+	    	    "E",
+	    	    "F",
+	    	    "G",
+	    	    "H",
+	    	    "I",
+	    	    "J",
+	    	    "K",
+	    	    "L",
+	    	    "M",
+	    	    "N",
+	    	    "O",
+	    	    "P",
+	    	    "Q",
+	    	    "R",
+	    	    "S",
+	    	    "T",
+	    	    "U",
+	    	    "V",
+	    	    "W",
+	    	    "X",
+	    	    "Y",
+	    	    "Z"
+	        };
+
+	    var charListLength = charList.Count;
+
+	    Random rnd = new Random();
+	    IList<String> charactersGenerated = new List<String>();
+
+	    int charSelected;
+	    for (int i = 0; i < resultLength; i++) {
+	        charSelected = rnd.Next(0, charListLength);
+	        charactersGenerated.Add(charList[charSelected]);
+	        charList.RemoveAt(charSelected);
+	        charListLength = charList.Count;
+	    }
+	    return charactersGenerated;
 	}
 
 	void DisplayCharacterBoxes () {
