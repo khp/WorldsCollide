@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,7 +7,10 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
 	[SerializeField] public MainGame game;
-	[SerializeField] public int playerNum;
+	[SerializeField] private Text selection;
+	[SerializeField] private Text favourText;
+	[SerializeField] private Text potentialText;
+	public int playerNum;
 	public int favour;
 	public int potential;
 	public string choice;
@@ -35,6 +39,8 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		selection.text = choice;
+		UpdateUI ();
 		if (clashOn) {
 			if (characters.Count > 0) {
 				ClashInput ();
@@ -51,6 +57,11 @@ public class Player : MonoBehaviour {
 				choice = choiceRes[s];
 			}
 		}
+	}
+
+	void UpdateUI() {
+		favourText.text = "Favour: " + favour.ToString ();
+		potentialText.text = "Potential: " + potential.ToString ();
 	}
 
 	public void ResetPlayer () {

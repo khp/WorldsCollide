@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,6 +12,7 @@ public class MainGame : MonoBehaviour {
 	[SerializeField] private Player player1;
 	[SerializeField] private Player player2;
 	[SerializeField] private KanghisKhan kang;
+	[SerializeField] private Text timer;
 
 	// Use this for initialization
 	void Start () {
@@ -19,15 +21,17 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		timer.text =  (Time.time - lastRoundEndTime).ToString();
 		if (!clashOn) {
-			if ((lastRoundEndTime + 2.0) > Time.time) {
+			if ((lastRoundEndTime + 3.0) < Time.time) {
 				ResolveChoices ();
+				lastRoundEndTime = Time.time;
 			}
 			player1.StopClash ();
 			player2.StopClash ();
 		} else {
-			player1.StartClash ();
-			player2.StartClash ();
+			// player1.StartClash ();
+			// player2.StartClash ();
 		}
 	}
 
@@ -38,7 +42,7 @@ public class MainGame : MonoBehaviour {
 		player1.potential = 0;
 		player1.favour = 0;
 		player2.potential = 0;
-		player2.potential = 0;
+		player2.favour = 0;
 		player1.game = this;
 		player2.game = this;
 
@@ -48,7 +52,7 @@ public class MainGame : MonoBehaviour {
 
 	void ResolveChoices () {
 		if (player1.choice == null && player2.choice != null) {
-			player1.potential = 0;
+			player1.potential = player1.potential == 0 ? 0 : player1.potential - 1;
 			player2.potential++;
 			kang.Point (player1);
 		} else if (player2.choice == null && player1.choice != null) {
@@ -60,6 +64,10 @@ public class MainGame : MonoBehaviour {
 			player2.potential = 0;
 			kang.Point (player1);
 			kang.Point (player2);
+			player2.potential = player2.potential == 0 ? 0 : player2.potential - 1;
+		} else if (player1.choice == null && player2.choice == null) {
+			player1.potential = player1.potential == 0 ? 0 : player1.potential - 1;
+			player2.potential = player2.potential == 0 ? 0 : player2.potential - 1;
 		} else {
 			ResolveOfferings ();
 			EndRound ();
