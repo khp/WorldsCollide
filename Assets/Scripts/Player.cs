@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
-	[SerializeField] private int playerNum;
+	[SerializeField] public MainGame game;
+	[SerializeField] public int playerNum;
 	public int favour;
 	public int potential;
 	public string choice;

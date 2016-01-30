@@ -10,6 +10,7 @@ public class MainGame : MonoBehaviour {
 	[SerializeField] private GameObject player2FavourBar;
 	[SerializeField] private Player player1;
 	[SerializeField] private Player player2;
+	[SerializeField] private KanghisKhan kang;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +39,8 @@ public class MainGame : MonoBehaviour {
 		player1.favour = 0;
 		player2.potential = 0;
 		player2.potential = 0;
+		player1.game = this;
+		player2.game = this;
 
 		// the game starts without a clash
 		clashOn = false;
@@ -47,12 +50,16 @@ public class MainGame : MonoBehaviour {
 		if (player1.choice == null && player2.choice != null) {
 			player1.potential = 0;
 			player2.potential++;
+			kang.Point (player1);
 		} else if (player2.choice == null && player1.choice != null) {
 			player1.potential++;
 			player2.potential = 0;
+			kang.Point (player2);
 		} else if (player1.choice == null && player2.choice == null) {
 			player1.potential = 0;
 			player2.potential = 0;
+			kang.Point (player1);
+			kang.Point (player2);
 		} else {
 			ResolveOfferings ();
 			EndRound ();
@@ -61,6 +68,8 @@ public class MainGame : MonoBehaviour {
 
 	void ResolveOfferings () {
 		if (player1.choice == player2.choice) {
+			//kang raises his arms before the clash begins
+			kang.RaiseArms ();
 			Clash ();
 		} else if (player1.choice == "elephant" && player2.choice == "mouse") {
 			player2.potential++;
