@@ -17,7 +17,7 @@ public class MainGame : MonoBehaviour {
 
 	public bool gamePaused;
 	public bool gameOver;
-	public int winningFavour = 20;
+	public int winningFavour = 10;
 
 
 	// Use this for initialization
@@ -34,7 +34,6 @@ public class MainGame : MonoBehaviour {
 
 		float countdown = (3 - Time.time + lastRoundEndTime);
 		if (intermission) {
-			timer.text = "Ready?";
 			if (lastRoundEndTime < Time.time - 2.0f) {
 				lastRoundEndTime = Time.time;
 				player1.selection.text = "";
@@ -47,7 +46,6 @@ public class MainGame : MonoBehaviour {
 			player1.HideAnimal ();
 			player2.HideAnimal();
 			kang.Rest ();
-			timer.text = "";
 			countdownUI.sprite = countdown.ToString ("n0");
 		
 			if ((lastRoundEndTime < Time.time - 3.0f) || (player1.choice != "" && player2.choice != "")) {
@@ -75,6 +73,7 @@ public class MainGame : MonoBehaviour {
 		player2.favour = 0;
 		player1.game = this;
 		player2.game = this;
+		timer.text = "Ready?";
 
 		// the game starts without a clash
 		clashOn = false;
@@ -127,15 +126,21 @@ public class MainGame : MonoBehaviour {
 			winner = player2;
 		}
 		winner.potential++;
-		kang.Point (winner);
+		if (player1 == winner)
+			StartCoroutine(ExecuteAfterTime (0.8f, player1, player2));
+		else
+			StartCoroutine(ExecuteAfterTime (0.8f, player2, player1));
 	}
 
 	void Clash () {
-		timer.text = "here";
 		player1.characters = GenerateCharacters (6);
 		player2.characters = GenerateCharacters (6);
 		clashOn = true;
 		ResolveBattle ();
+	}
+
+	void ClearTimer() {
+		timer.text = "";
 	}
 
 	List<string> GenerateCharacters (int resultLength) {
@@ -194,6 +199,7 @@ public class MainGame : MonoBehaviour {
 		player1.ResetPlayer ();
 		player2.ResetPlayer ();
 		intermission = true;
+		Invoke ("ClearTimer", 0.5f);
 	}
 
 	void EndGame () {
@@ -222,5 +228,14 @@ public class MainGame : MonoBehaviour {
 		player2.potential = defaultPotential;
 		clashOn = false;
 		kang.Laugh ();
+	}
+	IEnumerator ExecuteAfterTime(float time, Player winner, Player loser) {
+		yield return new WaitForSeconds (time);
+		kang.Point (winner);
+		loser.animal.DeathSound ();
+	}
+	void ExecuteAfterTime(Player winner, Player loser) {
+		kang.Point (winner);
+		loser.animal.DeathSound ();
 	}
 }
