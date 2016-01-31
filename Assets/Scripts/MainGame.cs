@@ -13,6 +13,7 @@ public class MainGame : MonoBehaviour {
 	[SerializeField] private Player player1;
 	[SerializeField] private Player player2;
 	[SerializeField] private Text timer;
+	[SerializeField] private Countdown countdownUI;
 
 	// Use this for initialization
 	void Start () {
@@ -36,8 +37,11 @@ public class MainGame : MonoBehaviour {
 			player1.HideAnimal ();
 			player2.HideAnimal();
 			kang.Rest ();
-			timer.text = countdown.ToString ("n2");
+			timer.text = "";
+			countdownUI.sprite = countdown.ToString ("n0");
+		
 			if ((lastRoundEndTime < Time.time - 3.0f) || (player1.choice != "" && player2.choice != "")) {
+				countdownUI.sprite = "";
 				ResolveChoices ();
 				lastRoundEndTime = Time.time;
 			}
@@ -45,6 +49,7 @@ public class MainGame : MonoBehaviour {
 			player2.StopClash ();
 		} else {
 			timer.text = "CLASH!!!";
+			countdownUI.sprite = "";
 			player1.StartClash ();
 			player2.StartClash ();
 		}
