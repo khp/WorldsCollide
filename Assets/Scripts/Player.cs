@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] private Text clashChar;
 	[SerializeField] private Animal animal;
 	[SerializeField] private StatusBar favourBar;
+	[SerializeField] private StatusBar potentialBar;
 	public int playerNum;
 	public int favour;
 	public int potential;
@@ -28,7 +29,6 @@ public class Player : MonoBehaviour {
 		choiceRes = new Dictionary<string,string> ();
 		finished = false;
 		clashOn = false;
-		favourBar = new StatusBar ();
 		if (playerNum == 1) {
 			choiceRes.Add ("1", "mouse");
 			choiceRes.Add ("2", "cat");
@@ -66,9 +66,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void UpdateUI() {
-		favourText.text = "Favour: " + favour.ToString ();
-		potentialText.text = "Potential: " + potential.ToString ();
 		favourBar.UpdateValue (this.favour);
+		potentialBar.UpdateValue (this.potential);
 	}
 
 	public void ResetPlayer () {
