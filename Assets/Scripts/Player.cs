@@ -73,6 +73,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void StartClash() {
+		this.GetComponent<Rigidbody2D> ().isKinematic = false;
 		this.Move ();
 		clashOn = true;
 		finished = false;
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour {
 	public void StopClash() {
 		clashOn = false;
 		finished = false;
+		this.GetComponent<Rigidbody2D> ().isKinematic = true;
 	}
 		
 	void ClashInput() {
@@ -95,16 +97,16 @@ public class Player : MonoBehaviour {
 
 	public void Move () {
 		if (this.playerNum == 1) {
-			if (this.GetComponent<Rigidbody2D> ().rotation <= 20) {
-				this.GetComponent<Rigidbody2D> ().AddTorque (2f);			
+			if (this.GetComponent<Rigidbody2D> ().rotation <= -20) {
+				this.GetComponent<Rigidbody2D> ().AddTorque (10f);			
 			} else {
-				this.GetComponent<Rigidbody2D> ().AddTorque (-2f);			
+				this.GetComponent<Rigidbody2D> ().AddTorque (-10f);			
 			}
 		} else {
-			if (this.GetComponent<Rigidbody2D> ().rotation <= -20) {
-				this.GetComponent<Rigidbody2D> ().AddTorque (2f);			
+			if (this.GetComponent<Rigidbody2D> ().rotation >= 20) {
+				this.GetComponent<Rigidbody2D> ().AddTorque (-10f);			
 			} else {
-				this.GetComponent<Rigidbody2D> ().AddTorque (-2f);			
+				this.GetComponent<Rigidbody2D> ().AddTorque (10f);			
 			}		
 		}
 	}
