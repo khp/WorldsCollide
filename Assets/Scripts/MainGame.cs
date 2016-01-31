@@ -17,7 +17,7 @@ public class MainGame : MonoBehaviour {
 
 	public bool gamePaused;
 	public bool gameOver;
-	public int winningFavour = 10;
+	public int winningFavour;
 
 
 	// Use this for initialization
@@ -201,9 +201,9 @@ public class MainGame : MonoBehaviour {
 
 	void EndGame () {
 		if (player1.favour >= winningFavour) {
-			timer.text = "Player 1 wins";
+			//timer.text = "Player 1 wins";
 		} else {
-			timer.text = "Player 2 wins";
+			//timer.text = "Player 2 wins";
 		}
 		kang.Laugh ();
 		gamePaused = true;
