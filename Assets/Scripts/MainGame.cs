@@ -128,9 +128,9 @@ public class MainGame : MonoBehaviour {
 		}
 		winner.potential++;
 		if (player1 == winner)
-			ExecuteAfterTime (1f, player1, player2);
+			StartCoroutine(ExecuteAfterTime (0.8f, player1, player2));
 		else
-			ExecuteAfterTime (1f, player2, player1);
+			StartCoroutine(ExecuteAfterTime (0.8f, player2, player1));
 	}
 
 	void Clash () {
@@ -228,6 +228,10 @@ public class MainGame : MonoBehaviour {
 	}
 	IEnumerator ExecuteAfterTime(float time, Player winner, Player loser) {
 		yield return new WaitForSeconds (time);
+		kang.Point (winner);
+		loser.animal.DeathSound ();
+	}
+	void ExecuteAfterTime(Player winner, Player loser) {
 		kang.Point (winner);
 		loser.animal.DeathSound ();
 	}
