@@ -21,7 +21,6 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		player1.GetComponent<Rigidbody2D>().AddTorque(1f);
 		if (intermission) {
 			float countdown = (2 - Time.time + lastRoundEndTime);
 			timer.text = "Ready?";
@@ -34,6 +33,8 @@ public class MainGame : MonoBehaviour {
 			return;
 		}
 		if (!clashOn) {
+			player1.Move ();
+			player2.Move ();
 			kang.Rest ();
 			float countdown = (3 - Time.time + lastRoundEndTime);
 			timer.text = countdown.ToString ("n2");

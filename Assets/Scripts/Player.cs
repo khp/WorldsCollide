@@ -90,7 +90,22 @@ public class Player : MonoBehaviour {
 	}
 
 	void ThrowAnimal() {
-	
+	}
+
+	public void Move () {
+		if (this.playerNum == 1) {
+			if (this.GetComponent<Rigidbody2D> ().rotation <= 20) {
+				this.GetComponent<Rigidbody2D> ().AddTorque (2f);			
+			} else {
+				this.GetComponent<Rigidbody2D> ().AddTorque (-2f);			
+			}
+		} else {
+			if (this.GetComponent<Rigidbody2D> ().rotation <= -20) {
+				this.GetComponent<Rigidbody2D> ().AddTorque (2f);			
+			} else {
+				this.GetComponent<Rigidbody2D> ().AddTorque (-2f);			
+			}		
+		}
 	}
 
 }
