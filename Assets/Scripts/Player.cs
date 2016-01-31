@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
 		UpdateUI ();
 		if (clashOn) {
 			if (characters.Count > 0) {
-				clashChar.text = characters [0];
+				clashChar.text = characters[0].ToUpper();
 				ClashInput ();
 			} else {
 				game.ClashWinner (this);
