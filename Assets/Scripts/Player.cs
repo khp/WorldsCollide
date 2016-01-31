@@ -121,4 +121,8 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void HideAnimal() {
+		animal.Hide ();
+	}
+
 }

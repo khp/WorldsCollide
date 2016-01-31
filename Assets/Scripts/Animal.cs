@@ -25,4 +25,9 @@ public class Animal : MonoBehaviour {
 		GetComponent<Transform>().position = new Vector3 (7.38f, 0.594f, -1f);
 		GetComponent<Rigidbody2D>().AddForce (new Vector2 (-190, 300));
 	}
+
+	public void Hide() {
+		Vector2 oldVector = GetComponent<Transform> ().position;
+		GetComponent<Transform> ().position = new Vector3 (oldVector.x, oldVector.y, 1);
+	}
 }
