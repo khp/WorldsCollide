@@ -1912,6 +1912,13 @@ MonoBehaviour:
   cat: {fileID: 21300000, guid: 82918407818624f14b9c2ad0235fa61e, type: 3}
   mouse: {fileID: 21300000, guid: aefac9746943d4507ae4c174d77d37da, type: 3}
   elephant: {fileID: 21300000, guid: b232e9a685c914ea19ed35d3f22d0199, type: 3}
+  animalType: 
+  catAlive: {fileID: 0}
+  catDead: {fileID: 0}
+  mouseAlive: {fileID: 0}
+  mouseDead: {fileID: 0}
+  elephantAlive: {fileID: 0}
+  elephantDead: {fileID: 0}
 --- !u!61 &1827697641
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2542,6 +2549,13 @@ MonoBehaviour:
   cat: {fileID: 21300000, guid: 82918407818624f14b9c2ad0235fa61e, type: 3}
   mouse: {fileID: 21300000, guid: aefac9746943d4507ae4c174d77d37da, type: 3}
   elephant: {fileID: 21300000, guid: b232e9a685c914ea19ed35d3f22d0199, type: 3}
+  animalType: 
+  catAlive: {fileID: 1873812050}
+  catDead: {fileID: 1873812049}
+  mouseAlive: {fileID: 1873812052}
+  mouseDead: {fileID: 1873812051}
+  elephantAlive: {fileID: 1873812054}
+  elephantDead: {fileID: 1873812053}
 --- !u!82 &1873812049
 AudioSource:
   m_ObjectHideFlags: 0
