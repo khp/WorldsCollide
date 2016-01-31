@@ -17,7 +17,7 @@ public class MainGame : MonoBehaviour {
 
 	public bool gamePaused;
 	public bool gameOver;
-	public int winningFavour = 20;
+	public int winningFavour = 10;
 
 
 	// Use this for initialization
