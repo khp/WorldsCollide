@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
 		game.kang.ShowFavour ();
 	}
 
-	void ThrowAnimal() {
+	void ThrowAnimal(string type) {
 	}
 
 	public void Move () {

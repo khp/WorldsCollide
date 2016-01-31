@@ -14,6 +14,6 @@ public class Animal : MonoBehaviour {
 	}
 
 	void Throw() {
-		GetComponent<Rigidbody2D>.AddForce (new Vector2 (5, 5));
+		GetComponent<Rigidbody2D>().AddForce (new Vector2 (5, 5));
 	}
 }
