@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] private Text favourText;
 	[SerializeField] private Text potentialText;
 	[SerializeField] private Text clashChar;
-	[SerializeField] private Animal animal;
+	public Animal animal;
 	[SerializeField] private StatusBar favourBar;
 	[SerializeField] private StatusBar potentialBar;
 	public int playerNum;
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour {
 			animal.ThrowRight ();
 		else
 			animal.ThrowLeft ();
+		animal.RegularSound ();
 	}
 
 	public void Move () {

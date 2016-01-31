@@ -127,7 +127,10 @@ public class MainGame : MonoBehaviour {
 			winner = player2;
 		}
 		winner.potential++;
-		kang.Point (winner);
+		if (player1 == winner)
+			ExecuteAfterTime (1f, player1, player2);
+		else
+			ExecuteAfterTime (1f, player2, player1);
 	}
 
 	void Clash () {
@@ -222,5 +225,10 @@ public class MainGame : MonoBehaviour {
 		player2.potential = defaultPotential;
 		clashOn = false;
 		kang.Laugh ();
+	}
+	IEnumerator ExecuteAfterTime(float time, Player winner, Player loser) {
+		yield return new WaitForSeconds (time);
+		kang.Point (winner);
+		loser.animal.DeathSound ();
 	}
 }
