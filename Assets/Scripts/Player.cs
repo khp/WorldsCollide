@@ -66,8 +66,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void UpdateUI() {
-		favourBar.UpdateValue (this.favour);
-		potentialBar.UpdateValue (this.potential);
+		favourBar.UpdateValue (this.favour, this.game.winningFavour);
+		potentialBar.UpdateValue (this.potential, this.game.winningFavour);
 	}
 
 	public void ResetPlayer () {
