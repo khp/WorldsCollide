@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
 	[SerializeField] public MainGame game;
-	[SerializeField] private Text selection;
+	[SerializeField] public Text selection;
 	[SerializeField] private Text favourText;
 	[SerializeField] private Text potentialText;
 	[SerializeField] private Text clashChar;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		selection.text = choice;
+		// selection.text = choice;
 		UpdateUI ();
 		if (clashOn) {
 			if (characters.Count > 0) {
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
 			return;
 		}
 		clashChar.text = "";
-		if (choice != "")
+		if (choice != "" || game.intermission)
 			return;
 		foreach (string s in choiceRes.Keys) {
 			if (Input.GetKey (s)) {

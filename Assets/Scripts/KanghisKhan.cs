@@ -3,7 +3,8 @@ using System.Collections;
 
 public class KanghisKhan : MonoBehaviour {
 
-
+	[SerializeField] private Sprite pointLeft;
+	[SerializeField] private Sprite pointRight;
 
 	// Use this for initialization
 	void Start () {
@@ -24,9 +25,9 @@ public class KanghisKhan : MonoBehaviour {
 
 	public void Point(Player player) {
 		if (player.playerNum == 1) {
-			//point to left-side of screen
+			GetComponent<SpriteRenderer> ().sprite = pointLeft;
 		} else {
-			//point to right-side of screen
+			GetComponent<SpriteRenderer> ().sprite = pointRight;
 		}
 		Laugh ();
 	}

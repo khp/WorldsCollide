@@ -4,10 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MainGame : MonoBehaviour {
-
+	public const int defaultPotential = 1;
 	private bool clashOn;
+	public bool intermission;
 	public KanghisKhan kang;
 	[SerializeField] private float lastRoundEndTime;
+	[SerializeField] private float pauseRoundTimer;
 	[SerializeField] private Player player1;
 	[SerializeField] private Player player2;
 	[SerializeField] private Text timer;
@@ -19,10 +21,21 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (intermission) {
+			float countdown = (2 - Time.time + lastRoundEndTime);
+			timer.text = "Ready?";
+			if (lastRoundEndTime < Time.time - 2.0f) {
+				lastRoundEndTime = Time.time;
+				player1.selection.text = "";
+				player2.selection.text = "";
+				intermission = false;
+			}
+			return;
+		}
 		if (!clashOn) {
 			float countdown = (3 - Time.time + lastRoundEndTime);
 			timer.text = countdown.ToString ("n2");
-			if (lastRoundEndTime < Time.time - 3.0f) {
+			if ((lastRoundEndTime < Time.time - 3.0f) || (player1.choice != "" && player2.choice != "")) {
 				ResolveChoices ();
 				lastRoundEndTime = Time.time;
 			}
@@ -39,9 +52,9 @@ public class MainGame : MonoBehaviour {
 	// This is called when the game begins
 	void Init () {
 		// set the players initial state
-		player1.potential = 0;
+		player1.potential = defaultPotential;
 		player1.favour = 0;
-		player2.potential = 0;
+		player2.potential = defaultPotential;
 		player2.favour = 0;
 		player1.game = this;
 		player2.game = this;
@@ -53,22 +66,20 @@ public class MainGame : MonoBehaviour {
 
 	void ResolveChoices () {
 		if (player1.choice == "" && player2.choice != "") {
-			player1.potential = player1.potential == 0 ? 0 : player1.potential - 1;
+			player1.potential = player1.potential == defaultPotential ? defaultPotential : player1.potential - 1;
 			player2.potential++;
 			kang.Point (player1);
 		} else if (player2.choice == "" && player1.choice != "") {
 			player1.potential++;
-			player2.potential = 0;
+			player2.potential = defaultPotential;
 			kang.Point (player2);
 		} else if (player1.choice == "" && player2.choice == "") {
-			player1.potential = 0;
-			player2.potential = 0;
-			kang.Point (player1);
-			kang.Point (player2);
-			player2.potential = player2.potential == 0 ? 0 : player2.potential - 1;
+			player1.potential = defaultPotential;
+			player2.potential = defaultPotential;
+			player2.potential = player2.potential == defaultPotential ? defaultPotential : player2.potential - 1;
 		} else if (player1.choice == "" && player2.choice == "") {
-			player1.potential = player1.potential == 0 ? 0 : player1.potential - 1;
-			player2.potential = player2.potential == 0 ? 0 : player2.potential - 1;
+			player1.potential = player1.potential == defaultPotential ? defaultPotential : player1.potential - 1;
+			player2.potential = player2.potential == defaultPotential ? defaultPotential : player2.potential - 1;
 		} else {
 			ResolveOfferings ();
 		}
@@ -154,9 +165,12 @@ public class MainGame : MonoBehaviour {
 	}
 
 	void EndRound () {
+		player1.selection.text = player1.choice;
+		player2.selection.text = player2.choice;
 		player1.ResetPlayer ();
 		player2.ResetPlayer ();
 		UpdateFavourBar ();
+		intermission = true;
 	}
 
 	void UpdateFavourBar () {
@@ -165,8 +179,8 @@ public class MainGame : MonoBehaviour {
 
 	public void ClashWinner (Player player) {
 		player.favour = player.potential + player.favour;
-		player1.potential = 0;
-		player2.potential = 0;
+		player1.potential = defaultPotential;
+		player2.potential = defaultPotential;
 		clashOn = false;
 	}
 }
