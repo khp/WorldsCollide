@@ -5,6 +5,7 @@ public class KanghisKhan : MonoBehaviour {
 
 	[SerializeField] private Sprite pointLeft;
 	[SerializeField] private Sprite pointRight;
+	[SerializeField] private Sprite rest;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,11 @@ public class KanghisKhan : MonoBehaviour {
 		}
 		Laugh ();
 	}
+
+	public void Rest() {
+		GetComponent<SpriteRenderer> ().sprite = rest;
+	}
+
 
 	public void ShowFavour () {
 	

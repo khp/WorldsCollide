@@ -33,6 +33,7 @@ public class MainGame : MonoBehaviour {
 			return;
 		}
 		if (!clashOn) {
+			kang.Rest ();
 			float countdown = (3 - Time.time + lastRoundEndTime);
 			timer.text = countdown.ToString ("n2");
 			if ((lastRoundEndTime < Time.time - 3.0f) || (player1.choice != "" && player2.choice != "")) {
@@ -71,12 +72,8 @@ public class MainGame : MonoBehaviour {
 			kang.Point (player1);
 		} else if (player2.choice == "" && player1.choice != "") {
 			player1.potential++;
-			player2.potential = defaultPotential;
-			kang.Point (player2);
-		} else if (player1.choice == "" && player2.choice == "") {
-			player1.potential = defaultPotential;
-			player2.potential = defaultPotential;
 			player2.potential = player2.potential == defaultPotential ? defaultPotential : player2.potential - 1;
+			kang.Point (player2);
 		} else if (player1.choice == "" && player2.choice == "") {
 			player1.potential = player1.potential == defaultPotential ? defaultPotential : player1.potential - 1;
 			player2.potential = player2.potential == defaultPotential ? defaultPotential : player2.potential - 1;
@@ -87,23 +84,27 @@ public class MainGame : MonoBehaviour {
 	}
 
 	void ResolveOfferings () {
+		Player winner = null;
 		if (player1.choice == player2.choice) {
 			//kang raises his arms before the clash begins
 			kang.RaiseArms ();
 			Clash ();
+			return;
 		} else if (player1.choice == "elephant" && player2.choice == "mouse") {
-			player2.potential++;
+			winner = player2;
 		} else if (player1.choice == "elephant" && player2.choice == "cat") {
-			player1.potential++;
+			winner = player1;
 		} else if (player1.choice == "cat" && player2.choice == "elephant") {
-			player2.potential++;
+			winner = player2;
 		} else if (player1.choice == "cat" && player2.choice == "mouse") {
-			player1.potential++;
+			winner = player1;
 		} else if (player1.choice == "mouse" && player2.choice == "elephant") {
-			player1.potential++;
+			winner = player1;
 		} else if (player1.choice == "mouse" && player2.choice == "cat") {
-			player2.potential++;
+			winner = player2;
 		}
+		winner.potential++;
+		kang.Point (winner);
 	}
 
 	void Clash () {
@@ -179,6 +180,7 @@ public class MainGame : MonoBehaviour {
 
 	public void ClashWinner (Player player) {
 		player.favour = player.potential + player.favour;
+		kang.Point (player);
 		player1.potential = defaultPotential;
 		player2.potential = defaultPotential;
 		clashOn = false;
