@@ -16,8 +16,7 @@ public class MainGame : MonoBehaviour {
 
 	public bool gamePaused;
 	public bool gameOver;
-	private const int winningFavour = 20;
-	private const int maxPotential = winningFavour;
+	public int winningFavour = 20;
 
 
 
