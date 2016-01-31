@@ -76,8 +76,6 @@ public class MainGame : MonoBehaviour {
 		} else if (player1.choice == "" && player2.choice == "") {
 			player1.potential = defaultPotential;
 			player2.potential = defaultPotential;
-			kang.Point (player1);
-			kang.Point (player2);
 			player2.potential = player2.potential == defaultPotential ? defaultPotential : player2.potential - 1;
 		} else if (player1.choice == "" && player2.choice == "") {
 			player1.potential = player1.potential == defaultPotential ? defaultPotential : player1.potential - 1;
