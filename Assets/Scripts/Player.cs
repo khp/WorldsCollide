@@ -66,8 +66,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void UpdateUI() {
-		favourBar.UpdateValue (this.favour, this.game.winningFavour);
-		potentialBar.UpdateValue (this.potential, this.game.winningFavour);
+		favourBar.UpdateValue (this.favour);
+		potentialBar.UpdateValue (this.potential);
 	}
 
 	public void ResetPlayer () {
@@ -96,11 +96,11 @@ public class Player : MonoBehaviour {
 
 	public void ThrowAnimal(string type) {
 		if (type == "cat")
-			animal.GetComponent<SpriteRenderer> ().sprite = animal.cat;
+			animal.animalType = "cat";
 		else if (type == "mouse")
-			animal.GetComponent<SpriteRenderer> ().sprite = animal.mouse;
+			animal.animalType = "mouse";
 		else if (type == "elephant")
-			animal.GetComponent<SpriteRenderer> ().sprite = animal.elephant;
+			animal.animalType = "elephant";
 		if (playerNum == 1)
 			animal.ThrowRight ();
 		else

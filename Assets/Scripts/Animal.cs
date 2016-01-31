@@ -69,6 +69,6 @@ public class Animal : MonoBehaviour {
 			currentSprite = elephant;
 		else
 			currentSprite = null;
-		GetComponent<SpriteRenderer> () = currentSprite;
+		GetComponent<SpriteRenderer> ().sprite = currentSprite;
 	}
 }
