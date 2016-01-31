@@ -69,15 +69,19 @@ public class MainGame : MonoBehaviour {
 		if (player1.choice == "" && player2.choice != "") {
 			player1.potential = player1.potential == defaultPotential ? defaultPotential : player1.potential - 1;
 			player2.potential++;
+			player2.ThrowAnimal (player2.choice);
 			kang.Point (player1);
 		} else if (player2.choice == "" && player1.choice != "") {
 			player1.potential++;
 			player2.potential = player2.potential == defaultPotential ? defaultPotential : player2.potential - 1;
+			player1.ThrowAnimal (player1.choice);
 			kang.Point (player2);
 		} else if (player1.choice == "" && player2.choice == "") {
 			player1.potential = player1.potential == defaultPotential ? defaultPotential : player1.potential - 1;
 			player2.potential = player2.potential == defaultPotential ? defaultPotential : player2.potential - 1;
 		} else {
+			player1.ThrowAnimal (player1.choice);
+			player2.ThrowAnimal (player2.choice);
 			ResolveOfferings ();
 		}
 		EndRound ();

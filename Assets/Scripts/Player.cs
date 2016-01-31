@@ -90,7 +90,17 @@ public class Player : MonoBehaviour {
 		game.kang.ShowFavour ();
 	}
 
-	void ThrowAnimal(string type) {
+	public void ThrowAnimal(string type) {
+		if (type == "cat")
+			animal.GetComponent<SpriteRenderer> ().sprite = animal.cat;
+		else if (type == "mouse")
+			animal.GetComponent<SpriteRenderer> ().sprite = animal.mouse;
+		else if (type == "elephant")
+			animal.GetComponent<SpriteRenderer> ().sprite = animal.elephant;
+		if (playerNum == 1)
+			animal.ThrowRight ();
+		else
+			animal.ThrowLeft ();
 	}
 
 	public void Move () {
