@@ -21,8 +21,8 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		float countdown = (3 - Time.time + lastRoundEndTime);
 		if (intermission) {
-			float countdown = (2 - Time.time + lastRoundEndTime);
 			timer.text = "Ready?";
 			if (lastRoundEndTime < Time.time - 2.0f) {
 				lastRoundEndTime = Time.time;
@@ -36,7 +36,6 @@ public class MainGame : MonoBehaviour {
 			player1.HideAnimal ();
 			player2.HideAnimal();
 			kang.Rest ();
-			float countdown = (3 - Time.time + lastRoundEndTime);
 			timer.text = countdown.ToString ("n2");
 			if ((lastRoundEndTime < Time.time - 3.0f) || (player1.choice != "" && player2.choice != "")) {
 				ResolveChoices ();
