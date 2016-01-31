@@ -6,6 +6,7 @@ public class Animal : MonoBehaviour {
 	public Sprite cat;
 	public Sprite mouse;
 	public Sprite elephant;
+
 	// Use this for initialization
 	void Start () {
 		

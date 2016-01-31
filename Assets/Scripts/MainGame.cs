@@ -19,7 +19,6 @@ public class MainGame : MonoBehaviour {
 	public int winningFavour = 20;
 
 
-
 	// Use this for initialization
 	void Start () {
 		Init ();
@@ -198,6 +197,7 @@ public class MainGame : MonoBehaviour {
 		} else {
 			timer.text = "Player 2 wins";
 		}
+		kang.Laugh ();
 		gamePaused = true;
 		gameOver = true;
 	}
@@ -216,5 +216,6 @@ public class MainGame : MonoBehaviour {
 		player1.potential = defaultPotential;
 		player2.potential = defaultPotential;
 		clashOn = false;
+		kang.Laugh ();
 	}
 }

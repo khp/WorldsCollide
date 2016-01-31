@@ -6,6 +6,7 @@ public class KanghisKhan : MonoBehaviour {
 	[SerializeField] private Sprite pointLeft;
 	[SerializeField] private Sprite pointRight;
 	[SerializeField] private Sprite rest;
+	public AudioSource audio;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,7 @@ public class KanghisKhan : MonoBehaviour {
 	public void Laugh () {
 		//trigger music for laughter
 		//animate his head moving up and down
-	
+		this.audio.Play();
 	}
 
 	public void RaiseArms () {
@@ -32,7 +33,6 @@ public class KanghisKhan : MonoBehaviour {
 		} else {
 			GetComponent<SpriteRenderer> ().sprite = pointRight;
 		}
-		Laugh ();
 	}
 
 	public void Rest() {
