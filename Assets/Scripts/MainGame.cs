@@ -21,6 +21,7 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		player1.GetComponent<Rigidbody2D>().AddTorque(1f);
 		if (intermission) {
 			float countdown = (2 - Time.time + lastRoundEndTime);
 			timer.text = "Ready?";

@@ -22,7 +22,6 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		favour = 0;
-		potential = 0;
 		choice = "";
 		choiceRes = new Dictionary<string,string> ();
 		finished = false;
