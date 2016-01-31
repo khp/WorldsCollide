@@ -72,6 +72,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void StartClash() {
+		this.Move ();
 		clashOn = true;
 		finished = false;
 	}

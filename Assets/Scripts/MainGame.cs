@@ -33,8 +33,6 @@ public class MainGame : MonoBehaviour {
 			return;
 		}
 		if (!clashOn) {
-			player1.Move ();
-			player2.Move ();
 			kang.Rest ();
 			float countdown = (3 - Time.time + lastRoundEndTime);
 			timer.text = countdown.ToString ("n2");
