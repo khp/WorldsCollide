@@ -34,7 +34,6 @@ public class MainGame : MonoBehaviour {
 
 		float countdown = (3 - Time.time + lastRoundEndTime);
 		if (intermission) {
-			timer.text = "Ready?";
 			if (lastRoundEndTime < Time.time - 2.0f) {
 				lastRoundEndTime = Time.time;
 				player1.selection.text = "";
@@ -47,7 +46,6 @@ public class MainGame : MonoBehaviour {
 			player1.HideAnimal ();
 			player2.HideAnimal();
 			kang.Rest ();
-			timer.text = "";
 			countdownUI.sprite = countdown.ToString ("n0");
 		
 			if ((lastRoundEndTime < Time.time - 3.0f) || (player1.choice != "" && player2.choice != "")) {
@@ -75,6 +73,7 @@ public class MainGame : MonoBehaviour {
 		player2.favour = 0;
 		player1.game = this;
 		player2.game = this;
+		timer.text = "Ready?";
 
 		// the game starts without a clash
 		clashOn = false;
@@ -134,11 +133,14 @@ public class MainGame : MonoBehaviour {
 	}
 
 	void Clash () {
-		timer.text = "here";
 		player1.characters = GenerateCharacters (6);
 		player2.characters = GenerateCharacters (6);
 		clashOn = true;
 		ResolveBattle ();
+	}
+
+	void ClearTimer() {
+		timer.text = "";
 	}
 
 	List<string> GenerateCharacters (int resultLength) {
@@ -197,6 +199,7 @@ public class MainGame : MonoBehaviour {
 		player1.ResetPlayer ();
 		player2.ResetPlayer ();
 		intermission = true;
+		Invoke ("ClearTimer", 0.5f);
 	}
 
 	void EndGame () {
