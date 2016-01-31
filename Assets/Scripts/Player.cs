@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] private Text favourText;
 	[SerializeField] private Text potentialText;
 	[SerializeField] private Text clashChar;
+	[SerializeField] private Animal animal;
 	public int playerNum;
 	public int favour;
 	public int potential;
@@ -87,6 +88,9 @@ public class Player : MonoBehaviour {
 			characters.RemoveAt (0);
 		}
 		game.kang.ShowFavour ();
+	}
+
+	void ThrowAnimal() {
 	}
 
 	public void Move () {
