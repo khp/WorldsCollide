@@ -17,11 +17,13 @@ public class KanghisKhan : MonoBehaviour {
 	}
 
 	public void Laugh () {
+		//trigger music for laughter
+		//animate his head moving up and down
 	
 	}
 
 	public void RaiseArms () {
-	
+		//need sprite of kanghis khan raising arms
 	}
 
 	public void Point(Player player) {
