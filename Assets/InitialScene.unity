@@ -535,6 +535,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1975105555}
   - 212: {fileID: 1975105554}
+  - 114: {fileID: 1975105557}
+  - 61: {fileID: 1975105556}
   m_Layer: 0
   m_Name: kanghis
   m_TagString: Untagged
@@ -584,3 +586,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!61 &1975105556
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1975105553}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.06, y: 1.42}
+--- !u!114 &1975105557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1975105553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd2faef04528474a85323f609f6b2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laughingKhan: {fileID: 8300000, guid: eee58df13996046d6b9bc49600a1ab2d, type: 3}
