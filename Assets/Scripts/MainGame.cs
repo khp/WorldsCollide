@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class MainGame : MonoBehaviour {
 	public const int defaultPotential = 1;
+	public const int maxFavour = 20;
+	public const int maxPotential = maxFavour;
 	private bool clashOn;
 	public bool intermission;
 	public KanghisKhan kang;
@@ -175,12 +177,7 @@ public class MainGame : MonoBehaviour {
 		player2.selection.text = player2.choice;
 		player1.ResetPlayer ();
 		player2.ResetPlayer ();
-		UpdateFavourBar ();
 		intermission = true;
-	}
-
-	void UpdateFavourBar () {
-
 	}
 
 	public void ClashWinner (Player player) {
@@ -189,5 +186,16 @@ public class MainGame : MonoBehaviour {
 		player1.potential = defaultPotential;
 		player2.potential = defaultPotential;
 		clashOn = false;
+		if (IsThereAWinner ()) {
+			//set game over bool to true
+		}
+	}
+
+	public bool IsThereAWinner () {
+		if (player1.favour >= maxFavour || player2.favour >= maxFavour) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
