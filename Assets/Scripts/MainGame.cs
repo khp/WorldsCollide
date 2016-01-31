@@ -16,6 +16,11 @@ public class MainGame : MonoBehaviour {
 	[SerializeField] private Player player2;
 	[SerializeField] private Text timer;
 
+	public bool gamePaused;
+	public bool gameOver;
+	private const int winningFavour = 20;
+
+
 	// Use this for initialization
 	void Start () {
 		Init ();
@@ -23,6 +28,11 @@ public class MainGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		if (gamePaused) {
+			return;
+		}
+
 		float countdown = (3 - Time.time + lastRoundEndTime);
 		if (intermission) {
 			timer.text = "Ready?";
@@ -65,8 +75,8 @@ public class MainGame : MonoBehaviour {
 
 		// the game starts without a clash
 		clashOn = false;
-		lastRoundEndTime = 0.0f;
-	}
+        lastRoundEndTime = Time.time;
+   	}
 
 	void ResolveChoices () {
 		if (player1.choice == "" && player2.choice != "") {
@@ -86,6 +96,9 @@ public class MainGame : MonoBehaviour {
 			player1.ThrowAnimal (player1.choice);
 			player2.ThrowAnimal (player2.choice);
 			ResolveOfferings ();
+		}
+		if (player1.favour >= winningFavour || player2.favour >= winningFavour) {
+			EndGame ();
 		}
 		EndRound ();
 	}
@@ -178,6 +191,24 @@ public class MainGame : MonoBehaviour {
 		player1.ResetPlayer ();
 		player2.ResetPlayer ();
 		intermission = true;
+	}
+
+	void EndGame () {
+		if (player1.favour >= winningFavour) {
+			timer.text = "Player 1 wins";
+		} else {
+			timer.text = "Player 2 wins";
+		}
+		gamePaused = true;
+		gameOver = true;
+	}
+
+	public void RestartGame () {
+		player1.favour = 0;
+		player1.potential = defaultPotential;
+		player2.favour = 0;
+		player2.potential = defaultPotential;
+		lastRoundEndTime = Time.time;
 	}
 
 	public void ClashWinner (Player player) {
