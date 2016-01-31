@@ -18,12 +18,12 @@ public class Animal : MonoBehaviour {
 
 	public void ThrowRight() {
 		GetComponent<Transform>().position = new Vector3 (-7.716f, 0.594f, -1f);
-		GetComponent<Rigidbody2D>().AddForce (new Vector2 (190, 300));
+		GetComponent<Rigidbody2D>().AddForce (new Vector2 (187, 300));
 	}
 
 	public void ThrowLeft() {
 		GetComponent<Transform>().position = new Vector3 (7.38f, 0.594f, -1f);
-		GetComponent<Rigidbody2D>().AddForce (new Vector2 (-190, 300));
+		GetComponent<Rigidbody2D>().AddForce (new Vector2 (-187, 300));
 	}
 
 	public void Hide() {
